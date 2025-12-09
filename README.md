@@ -62,6 +62,8 @@ ln -s ~/projects/compline.nvim/colors ~/.config/nvim/colors
 
 ## Usage
 
+### Basic
+
 ```vim
 " Set colorscheme
 colorscheme compline  " Dark
@@ -72,6 +74,93 @@ colorscheme lauds     " Light
 -- Or in Lua
 vim.cmd.colorscheme("compline")
 vim.cmd.colorscheme("lauds")
+```
+
+### With Configuration
+
+```lua
+require("compline").setup({
+  -- Transparency
+  transparent = {
+    enabled = false,  -- Transparent background
+    float = false,    -- Transparent floating windows
+    pmenu = false,    -- Transparent completion menu
+  },
+
+  -- Auto dark/light switching
+  auto_switch = {
+    enabled = false,      -- Enable auto-switching
+    mode = "time",        -- "system" or "time"
+    light_start_hour = 7, -- Switch to Lauds at 7 AM
+    dark_start_hour = 19, -- Switch to Compline at 7 PM
+  },
+
+  -- Style customization
+  styles = {
+    comments = { italic = true },
+    keywords = { bold = false },
+    functions = { bold = false },
+    variables = { bold = false },
+    strings = { italic = false },
+  },
+
+  -- Contrast adjustments
+  contrast = {
+    enabled = false,
+    popup = "default",   -- "default", "high", "low"
+    sidebar = "default",
+  },
+
+  -- Plugin integrations (all enabled by default)
+  integrations = {
+    telescope = true,
+    blink_cmp = true,
+    nvim_cmp = true,
+    gitsigns = true,
+    treesitter = true,
+    lsp = true,
+    markdown = true,
+    snacks = true,
+  },
+
+  -- Custom color overrides
+  colors = {
+    -- Override any color from the palette
+    -- red = "#ff0000",
+  },
+
+  -- Custom highlight overrides
+  highlights = {
+    -- Override specific highlight groups
+    -- Comment = { fg = "#808080", italic = true },
+  },
+})
+
+-- Then load the colorscheme
+vim.cmd.colorscheme("compline")
+```
+
+### Programmatic API
+
+```lua
+local compline = require("compline")
+
+-- Toggle between Compline and Lauds
+compline.toggle()
+
+-- Load specific theme
+compline.load("compline")
+compline.load("lauds")
+
+-- Enable transparency at runtime
+compline.enable_transparency({ background = true, float = true, pmenu = true })
+
+-- Get current colors
+local colors = compline.get_colors()
+print(colors.blue)  -- "#b4bcc4"
+
+-- Get current configuration
+local config = compline.get_config()
 ```
 
 ## Features
