@@ -8,7 +8,7 @@ if vim.fn.exists("syntax_on") then
 end
 
 vim.o.termguicolors = true
-vim.g.colors_name = "compline"
+vim.g.colors_name = "compline-dark"
 
 -- Compline Dark Palette
 local colors = {

@@ -9,7 +9,7 @@ if vim.fn.exists("syntax_on") then
 end
 
 vim.o.termguicolors = true
-vim.g.colors_name = "lauds"
+vim.g.colors_name = "compline-lauds"
 
 -- Lauds Light Palette
 local colors = {
