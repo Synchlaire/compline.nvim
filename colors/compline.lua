@@ -1,48 +1,67 @@
--- Compline: A colorscheme for deep contemplation and focus
--- Monastic minimalism - colors as whispers, not shouts
--- https://github.com/jblais493/compline
+-- Compline: Auto-switching colorscheme for Neovim
+-- Automatically selects dark or light based on vim.o.background
+-- https://github.com/Synchlaire/compline.nvim
 
 vim.cmd("hi clear")
 if vim.fn.exists("syntax_on") then
-  vim.cmd("syntax reset")
+	vim.cmd("syntax reset")
 end
 
 vim.o.termguicolors = true
 vim.g.colors_name = "compline"
 
--- Compline Dark Palette
-local colors = {
-  -- Base colors
-  bg = "#1a1d21",
-  fg = "#f0efeb",
+-- Determine which variant to use based on background setting
+local variant = vim.o.background == "light" and "light" or "dark"
 
-  -- Grays (base0-7)
-  base0 = "#0f1114",
-  base1 = "#22252a",
-  base2 = "#2f3239",
-  base3 = "#3c3f47",
-  base4 = "#515761",
-  base5 = "#676d77",
-  base6 = "#787e88",
-  base7 = "#8b919a",
-
-  -- Accent colors (muted, contemplative)
-  red = "#cdacac",
-  orange = "#ccc4b4",
-  yellow = "#d4ccb4",
-  green = "#b8c4b8",
-  cyan = "#b4c0c8",
-  blue = "#b4bcc4",
-  teal = "#b4c4bc",
-  dark_cyan = "#98a4ac",
-
-  -- Semantic
-  none = "NONE",
+-- Color palettes
+local palettes = {
+	dark = {
+		bg = "#1a1d21",
+		fg = "#f0efeb",
+		base0 = "#0f1114",
+		base1 = "#22252a",
+		base2 = "#2f3239",
+		base3 = "#3c3f47",
+		base4 = "#515761",
+		base5 = "#676d77",
+		base6 = "#787e88",
+		base7 = "#8b919a",
+		red = "#cdacac",
+		orange = "#ccc4b4",
+		yellow = "#d4ccb4",
+		green = "#b8c4b8",
+		cyan = "#b4c0c8",
+		blue = "#b4bcc4",
+		teal = "#b4c4bc",
+		dark_cyan = "#98a4ac",
+	},
+	light = {
+		bg = "#f0efeb",
+		fg = "#1a1d21",
+		base0 = "#f5f4f2",
+		base1 = "#e8e7e3",
+		base2 = "#d9d8d4",
+		base3 = "#c4c3bf",
+		base4 = "#999591",
+		base5 = "#7a7672",
+		base6 = "#686460",
+		base7 = "#5f5c58",
+		red = "#8b6666",
+		orange = "#7a6d5a",
+		yellow = "#8b7e52",
+		green = "#5a6b5a",
+		cyan = "#64757d",
+		blue = "#5a6b7a",
+		teal = "#4d6b6b",
+		dark_cyan = "#546470",
+	},
 }
+
+local colors = palettes[variant]
 
 -- Helper function
 local function hi(group, opts)
-  vim.api.nvim_set_hl(0, group, opts)
+	vim.api.nvim_set_hl(0, group, opts)
 end
 
 -- Editor UI

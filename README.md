@@ -1,29 +1,21 @@
 # compline.nvim
 
-> Monastic minimalism for Neovim - colors as whispers, not shouts
+> Monastic minimalism
 
-Two complementary colorschemes for deep contemplation and focus, inspired by [jblais493/compline](https://github.com/jblais493/compline).
+Two complementary colorschemes, using [jblais493/compline](https://github.com/jblais493/compline) scheme.
 
 ## Themes
 
-**Compline** (Dark) - Evening contemplation
+**Compline** (Dark)
+
 - Named after the Catholic liturgical prayer at nightfall
 - Muted pastels on deep charcoal
-- Low contrast for reduced eye strain during long sessions
+- Low contrast
 
-**Lauds** (Light) - Dawn and focus
-- Named after the morning prayer at dawn
+**Lauds** (Light)
+
 - Subtle earth tones on warm off-white
-- Gentle contrast for daytime work
-
-## Philosophy
-
-Designed for developers who value:
-- **Deep focus** - Minimal visual noise, nothing demands attention
-- **Extended sessions** - Easy on the eyes, no bright accent overload
-- **Aesthetic restraint** - Colors suggest rather than shout
-
-Perfect for writing code, prose, or anything requiring sustained concentration.
+- Gentle contrast
 
 ## Installation
 
@@ -38,42 +30,6 @@ Perfect for writing code, prose, or anything requiring sustained concentration.
     vim.cmd.colorscheme("compline")  -- or "lauds"
   end,
 }
-```
-
-### Using [themify.nvim](https://github.com/lmantw/themify.nvim)
-
-```lua
-{
-  dir = vim.fn.stdpath("config") .. "/../../projects/compline.nvim",
-  name = "compline.nvim",
-  whitelist = { "compline", "lauds" },
-}
-```
-
-### Manual
-
-```bash
-# Clone to your Neovim config
-git clone https://github.com/yourusername/compline.nvim ~/.config/nvim/colors/compline.nvim
-
-# Or symlink
-ln -s ~/projects/compline.nvim/colors ~/.config/nvim/colors
-```
-
-## Usage
-
-### Basic
-
-```vim
-" Set colorscheme
-colorscheme compline  " Dark
-colorscheme lauds     " Light
-```
-
-```lua
--- Or in Lua
-vim.cmd.colorscheme("compline")
-vim.cmd.colorscheme("lauds")
 ```
 
 ### With Configuration
@@ -199,14 +155,6 @@ Green:   #5a6b5a  │  Cyan:    #64757d  │  Blue:    #5a6b7a
 Teal:    #4d6b6b  │  DkCyan:  #546470
 ```
 
-## Screenshots
-
-*TODO: Add screenshots showing both themes*
-
-## Inspiration
-
-Based on the [Compline color palette](https://github.com/jblais493/compline) by jblais493, which includes ports for 18+ applications (VSCode, Kitty, Firefox, etc.).
-
 ## License
 
 MIT
@@ -214,4 +162,3 @@ MIT
 ## Credits
 
 - Original palette: [jblais493/compline](https://github.com/jblais493/compline)
-- Neovim port: Built with contemplation
