@@ -6,14 +6,17 @@ Two complementary colorschemes, using [jblais493/compline](https://github.com/jb
 
 ## Themes
 
-**Compline** (Dark)
+**Compline** (Auto-switching)
+- Automatically switches between dark/light based on `vim.o.background`
+- Perfect for use with background toggle keybinds
+- Respects system theme changes
 
+**Compline Dark** (Forced Dark)
 - Named after the Catholic liturgical prayer at nightfall
 - Muted pastels on deep charcoal
 - Low contrast
 
-**Lauds** (Light)
-
+**Compline Light** (Forced Light)
 - Subtle earth tones on warm off-white
 - Gentle contrast
 
@@ -23,12 +26,24 @@ Two complementary colorschemes, using [jblais493/compline](https://github.com/jb
 
 ```lua
 {
-  dir = "~/projects/compline.nvim",
+  "Synchlaire/compline.nvim",
   lazy = false,
   priority = 1000,
   config = function()
-    vim.cmd.colorscheme("compline")  -- or "lauds"
+    -- Choose one:
+    vim.cmd.colorscheme("compline")        -- Auto-switching (respects background setting)
+    -- vim.cmd.colorscheme("compline-dark")  -- Always dark
+    -- vim.cmd.colorscheme("compline-light") -- Always light
   end,
+}
+```
+
+### With Themify
+
+```lua
+{
+  "Synchlaire/compline.nvim",
+  whitelist = { "compline", "compline-dark", "compline-light" },
 }
 ```
 
