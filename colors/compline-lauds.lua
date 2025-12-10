@@ -9,6 +9,9 @@ if vim.fn.exists("syntax_on") then
 end
 
 vim.o.termguicolors = true
+if vim.o.background ~= "light" then
+  vim.o.background = "light"
+end
 vim.g.colors_name = "compline-lauds"
 
 -- Lauds Light Palette

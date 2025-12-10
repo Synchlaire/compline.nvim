@@ -1,12 +1,18 @@
--- Compline: Auto-switching colorscheme
--- Automatically selects dark or light based on vim.o.background
+-- Compline: Auto-switching colorscheme wrapper
+-- Redirects to compline-dark or compline-lauds based on vim.o.background
 
--- Detect which variant to load
-local variant = vim.o.background == "light" and "compline-lauds" or "compline-dark"
+-- Detect current background preference
+local bg = vim.o.background
+if bg == "" or bg == nil then
+  bg = "dark"  -- Default to dark
+  vim.o.background = "dark"
+end
 
--- Find and execute the variant file
-local colors_path = vim.fn.fnamemodify(debug.getinfo(1, "S").source:sub(2), ":p:h")
-local variant_file = colors_path .. "/" .. variant .. ".lua"
+-- Load the appropriate variant using dofile instead of :colorscheme
+-- to avoid Neovim's colorscheme command overhead
+local variant = (bg == "light") and "compline-lauds" or "compline-dark"
+local script_path = vim.fn.fnamemodify(debug.getinfo(1, "S").source:sub(2), ":p:h")
+local variant_file = script_path .. "/" .. variant .. ".lua"
 
--- Load the variant file directly
+-- Directly execute the variant file
 dofile(variant_file)
